@@ -1,0 +1,98 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+div.titlebar {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	position: absolute;
+	height: 8vw;
+	z-index: 98;
+	background: rgb(255,255,255);
+	background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 70%);
+}
+
+center.titlebar {
+	font-family: 'East Sea Dokdo', cursive;
+	color: black;
+	font-size: 5vw;
+	z-index: 3;
+}
+
+div.content {
+	position: absolute;
+	top: 8vw;
+}
+
+p.titlebar-love {
+	font-family: 'Roboto Mono', monospace;
+	font-size: 1vw;
+	position: relative;
+	top: -2vw;
+}
+
+div.infoArea {
+	z-index: 99;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,0.6);
+	position: fixed;
+	display: none;
+}
+
+div.infoBox {
+	background-color: white;
+	width: 22vw;
+	height: 22vh;
+	margin-left: 39vw;
+	margin-top: 39vh;
+}
+
+table.infoBox {
+	width: 20vw;
+	height: 20vh;
+	border: none;
+	padding-left: 2vw;
+	padding-top: 1vh;
+}
+
+div.statArea {
+	width: 100vw;
+	font-family: 'Bebas Neue', sans-serif;
+	text-align: center;
+	margin-top: 10vw;
+	font-size: 5vw;
+	line-height: 1vw;
+	text-shadow: 0px 0px 8px #ffffff;
+	z-index: 2;
+}
+
+p.statSmall {
+	font-size: 3.8vw;
+}
+
+p.statSmaller {
+	font-size: 3.2vw;
+}
+
+p.statDisclaim {
+	margin-top: 0.5vw;
+	font-family: 'Oswald', sans-serif;
+	font-size: 1vw;
+	font-weight: lighter;
+}
+
+span.statNum {
+	color: red;
+	font-weight: bold;
+}
+
+div.imgArea {
+	position: fixed;
+	z-index: 0;
+	overflow: hidden;
+	width: 100vw;
+	height: 100vw;
+}
