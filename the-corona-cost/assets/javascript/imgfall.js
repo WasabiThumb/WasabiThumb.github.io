@@ -13,6 +13,44 @@ Promise.allSettled([
 		res();
 	})
 ]).then(() => {
+	
+	var windowVisible = true;
+	(function() {
+		var hidden = "hidden";
+		if (hidden in document)
+			document.addEventListener("visibilitychange", onchange);
+		else if ((hidden = "mozHidden") in document)
+			document.addEventListener("mozvisibilitychange", onchange);
+		else if ((hidden = "webkitHidden") in document)
+			document.addEventListener("webkitvisibilitychange", onchange);
+		else if ((hidden = "msHidden") in document)
+			document.addEventListener("msvisibilitychange", onchange);
+		else if ("onfocusin" in document)
+			document.onfocusin = document.onfocusout = onchange;
+		else
+			window.onpageshow = window.onpagehide = window.onfocus = window.onblur = onchange;
+		function onchange(evt) {
+			var v = "visible",
+				h = "hidden",
+				evtMap = {
+					focus: v,
+					focusin: v,
+					pageshow: v,
+					blur: h,
+					focusout: h,
+					pagehide: h
+				};
+
+			evt = evt || window.event;
+			var cType = this[hidden] ? "hidden" : "visible";
+			if (evt.type in evtMap) cType = evtMap[evt.type];
+			windowVisible = (cType === "hidden" ? false : true);
+		}
+		if (document[hidden] !== undefined) onchange({
+			type: document[hidden] ? "blur" : "focus"
+		});
+	})();
+	
 	$.fn.isOnScreen = function(){
 
 		var win = $(window);
@@ -48,6 +86,7 @@ Promise.allSettled([
 	}
 	
 	CORONA_DEATHS.onIncrement((a) => {
+		if (!windowVisible) return;
 		a = Math.min(a, 100);
 		for (var i=0; i < a; i++){
 			let x = Math.floor(Math.random()*95);
