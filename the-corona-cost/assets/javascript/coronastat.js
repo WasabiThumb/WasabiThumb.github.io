@@ -98,11 +98,12 @@ Promise.allSettled([
 	updateTallies();
 	setInterval(updateTallies, 15*60e3);
 	// Update interpolated value every minute
+	var lastDateKnown = -1;
 	setInterval(async () => {
-		let dt = new Date();
-		if (lastDate != parseInt(dt.getFullYear().toString() + (dt.getMonth() < 9 ? "0" : "") + (dt.getMonth()+1).toString() + (dt.getDate() < 10 ? "0" : "") + dt.getDate().toString())){
+		if (lastDate != lastDateKnown){
 			await updateTallies();
 		}
+		lastDateKnown = lastDate;
 		let secs = dt.getSeconds() + (60 * (dt.getMinutes() + (60 * dt.getHours()))) + (dt.getMilliseconds()/1000);
 		let pc = secs/86400;
 		CORONA_DEATHS.setValue(current + Math.floor(daily*pc));
