@@ -70,8 +70,6 @@ Promise.allSettled([
 					}
 					if (typeof data.positive !== "undefined"){
 						currentPositive = data.positive;
-						currentPositive -= (data.death || 0);
-						currentPositive -= (data.recovered || 0);
 					}
 					if (typeof data.positiveIncrease !== "undefined"){
 						dailyPositive = data.positiveIncrease;
