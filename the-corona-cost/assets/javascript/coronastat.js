@@ -104,6 +104,7 @@ Promise.allSettled([
 			await updateTallies();
 		}
 		lastDateKnown = lastDate;
+		var dt = new Date();
 		let secs = dt.getSeconds() + (60 * (dt.getMinutes() + (60 * dt.getHours()))) + (dt.getMilliseconds()/1000);
 		let pc = secs/86400;
 		CORONA_DEATHS.setValue(current + Math.floor(daily*pc));
